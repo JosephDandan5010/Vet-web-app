@@ -24,14 +24,14 @@ public class UserRepositoryTests {
     // test methods go below
     @Test
     public void testCreateUser() {
-        Users user = new Users();
+        User user = new User();
         user.setEmail("dandan@gmail.com");
         user.setPassword("IDoCodeStuff");
         user.setUserName("Dandan");
 
-        Users savedUser = repo.save(user);
+        User savedUser = repo.save(user);
 
-        Users existUser = entityManager.find(Users.class, savedUser.getId());
+        User existUser = entityManager.find(User.class, savedUser.getId());
 
         assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
 

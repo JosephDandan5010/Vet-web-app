@@ -15,8 +15,14 @@ public class User {
     @Column(nullable = false, length = 64)
     private String password;
 
-    @Column(name = "user_name", nullable = false, length = 20)
-    private String userName;
+    @Column(name = "first_name", nullable = false, length = 20)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false, length = 20)
+    private String lastName;
+
+    // getters and setters are not shown
+
 
     public Long getId() {
         return id;
@@ -42,11 +48,19 @@ public class User {
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

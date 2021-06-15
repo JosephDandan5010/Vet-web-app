@@ -1,4 +1,4 @@
-package net.codejava;
+package com.example.demo;
 
 import javax.sql.DataSource;
 
@@ -51,12 +51,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
+                    .permitAll()
+                    .loginPage("/login")
                 .usernameParameter("email")
                 .defaultSuccessUrl("/users")
                 .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
     }
-
-
 }

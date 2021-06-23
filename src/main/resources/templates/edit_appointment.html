@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Edit Appointment Details</title>
+    <head>
+        <div th:insert="head" :: head></div>
+    </head>
+</head>
+<body>
+<!--START NAVBAR-->
+<div th:insert="navbar" :: mynavbar></div>
+<!--END NAVBAR-->
+<div class="container text-center">
+    <div>
+        <h1>Edit Appointment Details</h1>
+    </div>
+    <form th:action="@{/editAppointmentSave}" th:object="${appointment}"
+          method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+            <input type="hidden" th:field="*{id}" />
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Name: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{name}" class="form-control"
+                           required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Animal Illness: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{illness}" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Time: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{time}" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Status: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{status}" class="form-control"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

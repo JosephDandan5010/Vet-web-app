@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--START NAVBAR-->
+<div th:insert="navbar" :: mynavbar></div>
+<!--END NAVBAR-->
+<head>
+    <title>Animal Details</title>
+    <head>
+        <div th:insert="head" :: head></div>
+    </head>
+</head>
+<body>
+<div class="container text-center">
+    <div>
+        <h1>List of Animals</h1>
+    </div>
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>Animal ID</th>
+                <th>Owner Name</th>
+                <th>Pet Name</th>
+                <th>Gender</th>
+                <th>Species</th>
+                <th>Height</th>
+                <th>Weight</th>
+                <th>Edit/Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="animal: ${listAnimals}">
+                <td th:text="${animal.id}">Animal ID</td>
+                <td th:text="${animal.ownerName}">Owner Name</td>
+                <td th:text="${animal.petName}">Pet Name</td>
+                <td th:text="${animal.gender}">Gender</td>
+                <td th:text="${animal.species}">Species</td>
+                <td th:text="${animal.height}">Height(in)</td>
+                <td th:text="${animal.weight}">Weight(lbs)</td>
+                <td>
+                    <a th:href="@{'/animal/edit/' + ${animal.id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/animal/delete/' + ${animal.id}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

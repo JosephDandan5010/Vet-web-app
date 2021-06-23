@@ -5,7 +5,6 @@
             <img src="image" class="img-fluid">
         </div>
     </a>
-
     <div th:fragment="mynavbar">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -22,6 +21,18 @@
                     <form th:action="@{/logout}" method="post">
                         <input type="submit" value="Logout"/>
                     </form>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/appointments}">List of Appointments</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/appointment_form}">Register Appointment</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/animal_form}">Register Animal</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/animals}">List of Animals</a>
                 </li>
             </ul>
             <form sec:authorize="isAuthenticated()" class="form-inline my-2 my-lg-0">

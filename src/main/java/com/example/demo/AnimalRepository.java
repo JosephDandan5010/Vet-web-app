@@ -11,4 +11,7 @@ public interface AnimalRepository extends CrudRepository<Animal, Long> {
     public void updateById(double height, double weight, String species, String gender, String ownerName, String petName, long id);
 
     public List<Animal> findAllByOrderByIdAsc();
+
+    @Query(value = "SELECT a.* FROM animals a WHERE a.owner_name LIKE %?1% OR a.pet_name LIKE %?1%", nativeQuery = true)
+    public List<Animal> findByOwnerNameOrPetName(String name);
 }

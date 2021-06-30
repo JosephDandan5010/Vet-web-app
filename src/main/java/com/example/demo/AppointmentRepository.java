@@ -11,4 +11,7 @@ public interface AppointmentRepository extends CrudRepository<Appointment, Long>
     public void updateById( String name, String illness, String status, String time, long id);
 
     public List<Appointment> findAllByOrderByIdAsc();
+
+    @Query(value = "SELECT app.* FROM appointments app WHERE app.name LIKE %?1% OR app.illness LIKE %?1% OR app.time LIKE %?1%", nativeQuery = true)
+    public List<Appointment> findByName(String name);
 }

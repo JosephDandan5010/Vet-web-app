@@ -15,7 +15,7 @@
     <div>
         <h1>Edit Animal Details</h1>
     </div>
-    <form th:action="@{/editAnimalSave}" th:object="${animal}"
+    <form th:action="@{/user/editAnimalSave}" th:object="${animal}"
           method="post" style="max-width: 600px; margin: 0 auto;">
         <div class="m-3">
             <input type="hidden" th:field="*{id}" />

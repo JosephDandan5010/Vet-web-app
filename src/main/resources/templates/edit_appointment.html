@@ -15,7 +15,7 @@
     <div>
         <h1>Edit Appointment Details</h1>
     </div>
-    <form th:action="@{/editAppointmentSave}" th:object="${appointment}"
+    <form th:action="@{/user/editAppointmentSave}" th:object="${appointment}"
           method="post" style="max-width: 600px; margin: 0 auto;">
         <div class="m-3">
             <input type="hidden" th:field="*{id}" />

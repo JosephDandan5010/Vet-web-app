@@ -38,7 +38,7 @@
                 <td th:text="${animal.height}">Height(in)</td>
                 <td th:text="${animal.weight}">Weight(lbs)</td>
                 <td>
-                    <a th:href="@{'/animal/edit/' + ${animal.id}}">Edit</a>
+                    <a th:href="@{'/user/animal/edit/' + ${animal.id}}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
                     <a th:href="@{'/animal/delete/' + ${animal.id}}">Delete</a>
                 </td>

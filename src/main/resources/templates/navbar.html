@@ -1,10 +1,9 @@
+<script th:src="@{/js/navbar_action.js}" defer xmlns:th="http://www.w3.org/1999/xhtml"></script>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" xmlns:th="http://www.w3.org/1999/xhtml"
      xmlns:sec="http://www.w3.org/1999/xhtml">
-    <a class="navbar-brand" href="/">
         <div class="logo-image">
             <img src="image" class="img-fluid">
         </div>
-    </a>
     <div th:fragment="mynavbar">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -15,7 +14,10 @@
                     <a class="nav-link" th:href="@{/register}">Sign Up</a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <a class="nav-link" th:href="@{/users}">List of Users</a>
+                    <a class="nav-link" th:href="@{/user/home}">Home</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/user/users}">List of Users</a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <form th:action="@{/logout}" method="post">
@@ -23,21 +25,27 @@
                     </form>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <a class="nav-link" th:href="@{/appointments}">List of Appointments</a>
+                    <a class="nav-link" th:href="@{/user/appointments}">List of Appointments</a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <a class="nav-link" th:href="@{/appointment_form}">Register Appointment</a>
+                    <a class="nav-link" th:href="@{/user/appointment_form}">Register Appointment</a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <a class="nav-link" th:href="@{/animal_form}">Register Animal</a>
+                    <a class="nav-link" th:href="@{/user/animal_form}">Register Animal</a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <a class="nav-link" th:href="@{/animals}">List of Animals</a>
+                    <a class="nav-link" th:href="@{/user/animals}">List of Animals</a>
                 </li>
             </ul>
-            <form sec:authorize="isAuthenticated()" class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <form sec:authorize="isAuthenticated()" class="form-inline my-2 my-lg-0" method="GET" id="searchForm" accept-charset="UTF-8">
+                <input class="form-control mr-sm-2" type="search" name="query" id="searchInput" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" id="submitBtn">Search</button>
+                <div class="dropdown show">
+                    <select aria-labelledby="dropdownMenuLink" id="selectSearch">
+                        <option class="dropdown-item" value="animals">Animals</option>
+                        <option class="dropdown-item" value="appointments">Appointments</option>
+                    </select>
+                </div>
             </form>
         </div>
     </div>

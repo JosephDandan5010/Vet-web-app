@@ -34,7 +34,7 @@
                 <td th:text="${appointment.time}">Time</td>
                 <td th:text="${appointment.status}">Status</td>
                 <td>
-                    <a th:href="@{'/appointment/edit/' + ${appointment.id}}">Edit</a>
+                    <a th:href="@{'/user/appointment/edit/' + ${appointment.id}}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
                     <a th:href="@{'/appointment/delete/' + ${appointment.id}}">Delete</a>
                 </td>

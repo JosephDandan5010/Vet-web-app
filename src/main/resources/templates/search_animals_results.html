@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!--START NAVBAR-->
+<div th:insert="navbar" :: mynavbar></div>
+<!--END NAVBAR-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <head>
+        <div th:insert="head" :: head></div>
+    </head>
+    <div th:text="@{'Search results for ' + ${query}}"></div>
+    <div class="container text-center">
+        <div>
+            <h1>List of Animals</h1>
+        </div>
+        <div>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Animal ID</th>
+                    <th>Owner Name</th>
+                    <th>Pet Name</th>
+                    <th>Gender</th>
+                    <th>Species</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                    <th>Edit/Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="animal: ${listAnimals}">
+                    <td th:text="${animal.id}">Animal ID</td>
+                    <td th:text="${animal.ownerName}">Owner Name</td>
+                    <td th:text="${animal.petName}">Pet Name</td>
+                    <td th:text="${animal.gender}">Gender</td>
+                    <td th:text="${animal.species}">Species</td>
+                    <td th:text="${animal.height}">Height(in)</td>
+                    <td th:text="${animal.weight}">Weight(lbs)</td>
+                    <td>
+                        <a th:href="@{'/user/animal/edit/' + ${animal.id}}">Edit</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a th:href="@{'/user/animal/delete/' + ${animal.id}}">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!--START NAVBAR-->
+<div th:insert="navbar" :: mynavbar></div>
+<!--END NAVBAR-->
+<head>
+    <meta charset="UTF-8">
+    <title>List of Appointments</title>
+    <head>
+        <div th:insert="head" :: head></div>
+    </head>
+    <div th:text="@{'Search results for ' + ${query}}"></div>
+    <div class="container text-center">
+        <div>
+            <h1>List of Appointments</h1>
+        </div>
+        <div>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Appointment ID</th>
+                    <th>Name</th>
+                    <th>Animal Illness</th>
+                    <th>Status</th>
+                    <th>Time</th>
+                    <th>Edit/Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="appointment: ${listAppointments}">
+                    <td th:text="${appointment.id}">Appointment ID</td>
+                    <td th:text="${appointment.name}">Name</td>
+                    <td th:text="${appointment.illness}">Animal Illness</td>
+                    <td th:text="${appointment.status}">Status</td>
+                    <td th:text="${appointment.time}">Time</td>
+                    <td>
+                        <a th:href="@{'/user/appointment/edit/' + ${appointment.id}}">Edit</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a th:href="@{'/user/appointment/delete/' + ${appointment.id}}">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</head>
+<body>
+
+</body>
+</html>

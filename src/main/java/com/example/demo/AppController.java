@@ -35,7 +35,7 @@ public class AppController {
     @Autowired
     private AppointmentRepository appRepo;
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String viewWelcomePage() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {

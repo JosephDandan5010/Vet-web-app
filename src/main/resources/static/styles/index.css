@@ -18,3 +18,22 @@
 }
 */
 
+nav {
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+}
+
+#selectSearch {
+height: 38px;
+}
+
+#spaceContainer {
+flex: 1;
+}
+
+#navbarColor {
+background-color: #d3d3d3;
+}
+

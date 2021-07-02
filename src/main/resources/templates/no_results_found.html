@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <meta charset="ISO-8859-1">
+    <title>No results found</title>
+</head>
+<body>
 <!--START NAVBAR-->
 <div th:insert="navbar" :: mynavbar></div>
 <!--END NAVBAR-->
-<head>
-    <meta charset="UTF-8">
-    <title>No results found</title>
-    <head>
-        <div th:insert="head" :: head></div>
-    </head>
-</head>
-<body>
-    <h1>No results found</h1>
+    <h1 class="container text-center shadow p-3 mb-5 bg-white rounded mt-5">Sorry no search results were found for that
+    query :(</h1>
 </body>
 </html>

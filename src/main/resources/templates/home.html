@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:insert="head" :: head></div>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <meta charset="ISO-8859-1">
     <title>Vet Storage System (VSS)</title>
 </head>
 <body>
@@ -9,7 +14,7 @@
 <div th:insert="navbar" :: mynavbar></div>
 <!--END NAVBAR-->
 
-<div class="container text-center">
+<div class="container text-center shadow p-3 mb-5 bg-white rounded mt-3">
     <h1>Welcome to the Vet System</h1>
     <h2>You are now able to add, edit, or delete instances of animals and appointments within the system.</h2>
 </div>

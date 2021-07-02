@@ -1,11 +1,20 @@
-<script th:src="@{/js/navbar_action.js}" defer xmlns:th="http://www.w3.org/1999/xhtml"></script>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" xmlns:th="http://www.w3.org/1999/xhtml"
-     xmlns:sec="http://www.w3.org/1999/xhtml">
-        <div class="logo-image">
-            <img src="image" class="img-fluid">
-        </div>
-    <div th:fragment="mynavbar">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<DOCTYPE html xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+        <script th:src="@{/js/navbar_action.js}" defer xmlns:th="http://www.w3.org/1999/xhtml"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous"></script>
+        <link th:href="@{/styles/index.css}" rel="stylesheet">
+        <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        <meta charset="ISO-8859-1">
+        <title>Appointment Details</title>
+    </head>
+    <body>
+    <nav th:fragment="mynavbar" class="navbar navbar-expand-lg navbar-light" id="navbarColor"
+         xmlns:th="http://www.w3.org/1999/xhtml">
+        <div class="navbar" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li sec:authorize="!isAuthenticated()" class="nav-item">
                     <a class="nav-link" th:href="@{/login}">Login</a>
@@ -19,34 +28,48 @@
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <a class="nav-link" th:href="@{/user/users}">List of Users</a>
                 </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <form th:action="@{/logout}" method="post">
-                        <input type="submit" value="Logout"/>
-                    </form>
+                <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="animalNavbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Animals
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" th:href="@{/user/animal_form}">Register Animal</a>
+                        <a class="dropdown-item" th:href="@{/user/animals}">View Animals</a>
+                    </div>
                 </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <a class="nav-link" th:href="@{/user/appointments}">List of Appointments</a>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <a class="nav-link" th:href="@{/user/appointment_form}">Register Appointment</a>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <a class="nav-link" th:href="@{/user/animal_form}">Register Animal</a>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <a class="nav-link" th:href="@{/user/animals}">List of Animals</a>
+                <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="appointmentNavbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Appointments
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" th:href="@{/user/appointment_form}">Register Appointment</a>
+                        <a class="dropdown-item" th:href="@{/user/appointments}">View Appointments</a>
+                    </div>
                 </li>
             </ul>
-            <form sec:authorize="isAuthenticated()" class="form-inline my-2 my-lg-0" method="GET" id="searchForm" accept-charset="UTF-8">
-                <input class="form-control mr-sm-2" type="search" name="query" id="searchInput" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" id="submitBtn">Search</button>
-                <div class="dropdown show">
+            <div>
+                <form sec:authorize="isAuthenticated()" class="form-inline" method="GET"
+                      id="searchForm"
+                      accept-charset="UTF-8">
+                    <input class="form-control" type="search" name="query" id="searchInput" placeholder="Search"
+                           aria-label="Search">
+                    <button class="btn btn-secondary" id="submitBtn">Search</button>
                     <select aria-labelledby="dropdownMenuLink" id="selectSearch">
                         <option class="dropdown-item" value="animals">Animals</option>
                         <option class="dropdown-item" value="appointments">Appointments</option>
                     </select>
-                </div>
+                </form>
+            </div>
+        </div>
+        <div id="spaceContainer">
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post">
+                <button class="btn btn-secondary" type="submit" value="Logout" id="logoutBTN">Logout</button>
             </form>
         </div>
-    </div>
-</nav>
+    </nav>
+    </body>
+</DOCTYPE>

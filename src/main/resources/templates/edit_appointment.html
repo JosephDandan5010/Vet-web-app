@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <meta charset="ISO-8859-1">
     <title>Edit Appointment Details</title>
-    <head>
-        <div th:insert="head" :: head></div>
-    </head>
 </head>
 <body>
 <!--START NAVBAR-->
 <div th:insert="navbar" :: mynavbar></div>
 <!--END NAVBAR-->
-<div class="container text-center">
+<div class="container text-center mt-3">
     <div>
         <h1>Edit Appointment Details</h1>
     </div>
     <form th:action="@{/user/editAppointmentSave}" th:object="${appointment}"
           method="post" style="max-width: 600px; margin: 0 auto;">
         <div class="m-3">
-            <input type="hidden" th:field="*{id}" />
+            <input type="hidden" th:field="*{id}"/>
             <div class="form-group row">
                 <label class="col-4 col-form-label">Name: </label>
                 <div class="col-8">

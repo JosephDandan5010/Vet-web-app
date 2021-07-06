@@ -41,7 +41,7 @@ public class AppController {
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
             return "index";
         }
-        return "index";
+        return "redirect:/user/home";
     }
 
     @GetMapping("/user/home")

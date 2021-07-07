@@ -36,7 +36,8 @@ There are no major requirements for the technologies listed above other than ins
 
 
 ## To do:
-- Add more features and possibly a better search.
+- Add a better search for the data within the db
+- Add logic to savve the date when the instance of the animal or appointment object was made or edited.
 
 
 ## Project Status

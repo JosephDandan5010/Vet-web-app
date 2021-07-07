@@ -26,8 +26,8 @@ There are no major requirements for the technologies listed above other than ins
 
 ## Features
 - Users can enter appointment details
-- Users can enter details of their visit
 - Users can update details of the appointment
+- Users can delete animals
 - Users can delete appointments
 - Users can update the status of that persons appointment
 - Users can view all appointments

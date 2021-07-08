@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -9,11 +10,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class AppController {
@@ -45,7 +48,9 @@ public class AppController {
     }
 
     @GetMapping("/user/home")
-    public String viewHomePage() {return "home"; }
+    public String viewHomePage() {
+        return "home";
+    }
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
@@ -117,7 +122,7 @@ public class AppController {
     }
 
     @GetMapping("user/animal_form")
-    public String animalForm(Model model){
+    public String animalForm(Model model) {
         Animal animal = new Animal();
         model.addAttribute("animal", animal);
         return "animal_form";
@@ -139,17 +144,18 @@ public class AppController {
     }
 
     @RequestMapping("user/animal/edit/{id}")
-    public ModelAndView editAnimal(@PathVariable(name = "id") int id) {
-        ModelAndView mav = new ModelAndView("edit_animal");
-        Animal animal = animalService.get(id);
-        mav.addObject("animal", animal);
-
-        System.out.println(id);
-        return mav;
+    public String editAnimal(@PathVariable(name = "id") long id, Model model) {
+        Optional<Animal> animal = animalRepo.findById(id);
+        if (animal.isPresent()) {
+            model.addAttribute("animal", animal.get());
+            return "edit_animal";
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 
     @RequestMapping("animal/delete/{id}")
-    public String deleteAnimal(@PathVariable(name = "id") int id) {
+    public String deleteAnimal(@PathVariable(name = "id") long id) {
         animalService.delete(id);
         return "redirect:/user/animals";
     }
@@ -170,7 +176,7 @@ public class AppController {
     }
 
     @GetMapping("/user/appointment_form")
-    public String appointmentForm(Model model){
+    public String appointmentForm(Model model) {
         Appointment appointment = new Appointment();
         model.addAttribute("appointment", appointment);
         return "appointment_form";
@@ -190,23 +196,26 @@ public class AppController {
     }
 
     @RequestMapping("user/appointment/edit/{id}")
-    public ModelAndView editAppointment(@PathVariable(name = "id") int id) {
-        ModelAndView mav = new ModelAndView("edit_appointment");
-        Appointment appointment = appService.get(id);
-        mav.addObject("appointment", appointment);
-
-        System.out.println(id);
-        return mav;
+    public String editAppointment(@PathVariable(name = "id") long id, Model model) {
+//        ModelAndView mav = new ModelAndView("edit_appointment");
+        Optional<Appointment> appointment = appRepo.findById(id);
+        if (appointment.isPresent()) {
+            model.addAttribute("appointment", appointment.get());
+            return "edit_appointment";
+        } else {
+            System.out.println("test");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 
     @RequestMapping("appointment/delete/{id}")
-    public String deleteAppointment(@PathVariable(name = "id") int id) {
+    public String deleteAppointment(@PathVariable(name = "id") long id) {
         appService.delete(id);
         return "redirect:/user/appointments";
     }
 
     @RequestMapping("user/search/animals")
-    public String searchAnimals(Model model, @RequestParam(value="query", required=false) String query) {
+    public String searchAnimals(Model model, @RequestParam(value = "query", required = false) String query) {
         List<Animal> results = animalRepo.findByOwnerNameOrPetName(query);
         model.addAttribute("listAnimals", results);
         model.addAttribute("query", query);
@@ -217,7 +226,7 @@ public class AppController {
     }
 
     @RequestMapping("user/search/appointments")
-    public String searchAppointments(Model model, @RequestParam(value="query", required=false) String query) {
+    public String searchAppointments(Model model, @RequestParam(value = "query", required = false) String query) {
         List<Appointment> results = appRepo.findByName(query);
         System.out.println(results);
         model.addAttribute("listAppointments", results);

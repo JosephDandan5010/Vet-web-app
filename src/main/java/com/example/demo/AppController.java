@@ -76,7 +76,7 @@ public class AppController {
 
     @GetMapping("user/users")
     public String listUsers(Model model) {
-        List<User> listUsers = (List<User>) userRepo.findAll();
+        List<User> listUsers = (List<User>) userRepo.findAllByOrderByIdAsc();
 
         model.addAttribute("listUsers", listUsers);
 
